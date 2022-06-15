@@ -14,9 +14,11 @@ ENV DB_USERNAME polr
 ENV POLR_BASE 62
 
 # Install packages and remove default server definition
-RUN apk --no-cache add bash git php7 php7-fpm php7-opcache php7-mysqli php7-json php7-openssl php7-curl \
-        php7-zlib php7-xml php-xmlwriter php7-phar php7-intl php7-dom php7-xmlreader php7-ctype php7-session \
-        php7-mbstring php7-gd php7-pdo php7-pdo_mysql php7-pdo_sqlite php7-tokenizer nginx supervisor curl && \
+RUN apk --no-cache add bash git nginx supervisor curl && \
+    apk --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ add php7 php7-fpm \
+        php7-opcache php7-mysqli php7-json php7-openssl php7-curl php7-zlib php7-xml php7-xmlwriter \
+        php7-phar php7-intl php7-dom php7-xmlreader php7-ctype php7-session php7-mbstring php7-gd \
+        php7-pdo php7-pdo_mysql php7-pdo_sqlite php7-tokenizer && \
     apk add --update libintl && \
     apk add --virtual build_deps gettext &&  \
     cp /usr/bin/envsubst /usr/local/bin/envsubst && \
@@ -31,6 +33,9 @@ COPY config/php.ini /etc/php7/conf.d/custom.ini
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Add symbolic link for php
+RUN ln -s php7 /usr/bin/php
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer \

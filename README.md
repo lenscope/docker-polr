@@ -1,6 +1,9 @@
+⚠️ POLR IS UNMAINTAINED SINCE FEBRUARY 2021⚠️
+<br>I suggest you to use more up-to-date alternatives such as [Shlink](https://github.com/shlinkio/shlink) or [Kutt.it](https://github.com/thedevs-network/kutt).
+----
+
 Polr on Alpine Linux with Docker
 ==============================================
-![Docker Build Status](https://img.shields.io/docker/cloud/build/ajanvier/polr)
 ![Docker Image Size](https://img.shields.io/docker/image-size/ajanvier/polr)
 ![Docker Pulls](https://img.shields.io/docker/pulls/ajanvier/polr)
 ![Docker Latest Version](https://img.shields.io/docker/v/ajanvier/polr?sort=semver)

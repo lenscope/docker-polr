@@ -45,7 +45,7 @@ RUN curl -sS https://getcomposer.org/installer \
 RUN mkdir -p /var/www/html
 
 # Pull Polr
-RUN git clone https://github.com/cydrobolt/polr.git /var/www/html
+RUN git clone https://github.com/lenscope/polr.git /var/www/html
 
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
 RUN chown -R nobody.nobody /var/www/html && \
